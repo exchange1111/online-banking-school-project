@@ -1,7 +1,7 @@
 {
   "name": "online-banking-school-project",
-  "version": "1.0.0",
-  "description": "Online banking school project with admin controls and tokenized withdrawal flow.",
+  "version": "2.0.0",
+  "description": "Modern online banking school project with real SQLite database, admin controls, and token-based withdrawals.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -10,6 +10,7 @@
     "bcryptjs": "^2.4.3",
     "ejs": "^3.1.0",
     "express": "^4.19.2",
-    "express-session": "^1.18.0"
+    "express-session": "^1.18.0",
+    "sqlite3": "^5.1.7"
   }
 }

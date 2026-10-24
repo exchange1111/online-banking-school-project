@@ -1,44 +1,41 @@
-# Online Banking School Project
+# Urban Bank
 
-A full-stack online banking website built for a school project. It includes:
+A modern online banking school project with a real SQLite database.
 
-- Admin login and dashboard
-- User registration and login
-- Customer balance viewing
-- Admin-controlled balance updates
-- Withdrawal requests through a customer support chat
-- Token-based withdrawal approval process
+## Features
 
-## Demo credentials
+- Secure login and registration
+- Admin-only balance management
+- User dashboard with account data
+- Support chat for withdrawal requests
+- Token-based withdrawal approvals
+- SQLite database for persistent data
 
-Admin:
+## Demo accounts
+
+Admin account:
 - Email: admin@bank.com
 - Password: admin123
 
-User:
+Customer account:
 - Email: user@bank.com
 - Password: user123
 
-## Run the project
+## Run locally
 
 1. Install dependencies:
    npm install
 
-2. Start the application:
+2. Start the app:
    npm start
 
-3. Open the browser:
+3. Open in your browser:
    http://localhost:3000
 
-## Features implemented
+## Database
 
-- User-friendly homepage
-- Secure session-based authentication
-- Admin-only balance controls
-- Support chat for withdrawal requests
-- Dynamic token issuance flow after admin review
-- Simple JSON-based persistence for demonstration purposes
+The project uses SQLite and stores data in `data/bank.db` automatically when the app starts.
 
 ## Notes
 
-This is a project demo and uses local JSON files for storage instead of a database, making it easy to run and understand for school assignments.
+This is designed as a school project and demonstrates how a real database-backed banking app can work with simple, understandable code.

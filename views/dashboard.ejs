@@ -7,67 +7,71 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <nav class="navbar">
-      <div class="container">
-        <div class="brand">Urban Bank</div>
-        <div class="nav-links">
+    <header class="main-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand-mark">U</span>
+          <span>Urban Bank</span>
+        </div>
+
+        <nav class="nav-menu">
           <a href="/dashboard">Dashboard</a>
-          <a href="/chat">Support Chat</a>
-          <form action="/logout" method="POST" style="display:inline;">
+          <a href="/chat">Support</a>
+          <form action="/logout" method="POST" style="display:inline; margin:0;">
             <button type="submit">Logout</button>
           </form>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </header>
 
-    <main class="container page-header">
-      <h1>Welcome, <%= user.name %></h1>
-      <p class="muted">Your secure account dashboard</p>
+    <main class="page-shell">
+      <div class="container">
+        <h1 class="page-title">Welcome, <%= user.name %></h1>
+        <p class="subtle">Your secure account overview.</p>
 
-      <div class="dashboard-grid">
-        <section class="card">
-          <h3>Account Summary</h3>
-          <div class="stat-grid">
-            <div class="stat-item">
-              <strong>Balance</strong>
-              <div>$<%= Number(user.balance).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></div>
+        <div class="dashboard-grid">
+          <section class="card">
+            <h3>Account summary</h3>
+            <div class="stat-grid">
+              <div class="stat-box">
+                <p>Current balance</p>
+                <strong>$<%= Number(user.balance).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></strong>
+              </div>
+              <div class="stat-box">
+                <p>Email</p>
+                <strong><%= user.email %></strong>
+              </div>
             </div>
-            <div class="stat-item">
-              <strong>Email</strong>
-              <div><%= user.email %></div>
+
+            <div style="margin-top: 20px;">
+              <a class="btn btn-primary" href="/chat">Open support chat</a>
             </div>
-          </div>
+          </section>
 
-          <div style="margin-top: 20px;">
-            <a class="btn btn-primary" href="/chat">Open Support Chat</a>
-          </div>
-        </section>
-
-        <section class="card">
-          <h3>Withdrawal Requests</h3>
-          <% if (requests.length === 0) { %>
-            <p class="muted">No requests yet.</p>
-          <% } else { %>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Amount</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% requests.forEach((request) => { %>
+          <section class="card">
+            <h3>Withdrawal requests</h3>
+            <% if (!requests || requests.length === 0) { %>
+              <p class="note">No withdrawal requests yet.</p>
+            <% } else { %>
+              <table class="table">
+                <thead>
                   <tr>
-                    <td>$<%= Number(request.amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></td>
-                    <td>
-                      <span class="badge <%= request.status %>"><%= request.status %></span>
-                    </td>
+                    <th>Amount</th>
+                    <th>Status</th>
                   </tr>
-                <% }); %>
-              </tbody>
-            </table>
-          <% } %>
-        </section>
+                </thead>
+                <tbody>
+                  <% requests.forEach((request) => { %>
+                    <tr>
+                      <td>$<%= Number(request.amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></td>
+                      <td><span class="badge <%= request.status %>"><%= request.status %></span></td>
+                    </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            <% } %>
+          </section>
+        </div>
       </div>
     </main>
   </body>

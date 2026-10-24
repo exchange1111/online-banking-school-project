@@ -7,42 +7,51 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <nav class="navbar">
-      <div class="container">
-        <div class="brand">Urban Bank</div>
-        <div class="nav-links">
+    <header class="main-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand-mark">U</span>
+          <span>Urban Bank</span>
+        </div>
+
+        <nav class="nav-menu">
           <a href="/">Home</a>
           <a href="/login">Login</a>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </header>
 
-    <main class="container form-wrap">
-      <div class="card">
-        <h2>Create Account</h2>
+    <main class="page-shell">
+      <div class="container form-shell">
+        <div class="card">
+          <div class="form-header">
+            <h2>Create account</h2>
+            <p class="note">Start managing your finances with us.</p>
+          </div>
 
-        <% if (typeof error !== 'undefined' && error) { %>
-          <div class="alert"><%= error %></div>
-        <% } %>
+          <% if (error) { %>
+            <div class="alert"><%= error %></div>
+          <% } %>
 
-        <form action="/register" method="POST">
-          <label>
-            Full Name
-            <input type="text" name="name" placeholder="Jane Doe" required />
-          </label>
+          <form action="/register" method="POST">
+            <label>
+              Full name
+              <input type="text" name="name" placeholder="Jane Doe" required />
+            </label>
 
-          <label>
-            Email
-            <input type="email" name="email" placeholder="jane@example.com" required />
-          </label>
+            <label>
+              Email address
+              <input type="email" name="email" placeholder="jane@example.com" required />
+            </label>
 
-          <label>
-            Password
-            <input type="password" name="password" placeholder="Create a strong password" required />
-          </label>
+            <label>
+              Password
+              <input type="password" name="password" placeholder="Create a secure password" required />
+            </label>
 
-          <button class="btn btn-primary" type="submit">Register</button>
-        </form>
+            <button class="btn btn-primary" type="submit">Register now</button>
+          </form>
+        </div>
       </div>
     </main>
   </body>

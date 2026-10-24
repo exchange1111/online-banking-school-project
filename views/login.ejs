@@ -7,44 +7,53 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <nav class="navbar">
-      <div class="container">
-        <div class="brand">Urban Bank</div>
-        <div class="nav-links">
+    <header class="main-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand-mark">U</span>
+          <span>Urban Bank</span>
+        </div>
+
+        <nav class="nav-menu">
           <a href="/">Home</a>
           <a href="/register">Register</a>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </header>
 
-    <main class="container form-wrap">
-      <div class="card">
-        <h2>Login</h2>
+    <main class="page-shell">
+      <div class="container form-shell">
+        <div class="card">
+          <div class="form-header">
+            <h2>Welcome back</h2>
+            <p class="note">Access your account securely.</p>
+          </div>
 
-        <% if (typeof error !== 'undefined' && error) { %>
-          <div class="alert"><%= error %></div>
-        <% } %>
+          <% if (error) { %>
+            <div class="alert"><%= error %></div>
+          <% } %>
 
-        <form action="/login" method="POST">
-          <label>
-            Email
-            <input type="email" name="email" placeholder="you@example.com" required />
-          </label>
+          <form action="/login" method="POST">
+            <label>
+              Email address
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
 
-          <label>
-            Password
-            <input type="password" name="password" placeholder="••••••••" required />
-          </label>
+            <label>
+              Password
+              <input type="password" name="password" placeholder="Enter your password" required />
+            </label>
 
-          <button class="btn btn-primary" type="submit">Sign In</button>
-        </form>
+            <button class="btn btn-primary" type="submit">Sign in</button>
+          </form>
 
-        <p class="muted" style="margin-top: 16px;">
-          Demo admin: admin@bank.com / admin123
-        </p>
-        <p class="muted">
-          Demo user: user@bank.com / user123
-        </p>
+          <p class="note" style="margin-top: 16px;">
+            Demo admin: admin@bank.com / admin123
+          </p>
+          <p class="note">
+            Demo user: user@bank.com / user123
+          </p>
+        </div>
       </div>
     </main>
   </body>

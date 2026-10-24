@@ -7,89 +7,96 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <nav class="navbar">
-      <div class="container">
-        <div class="brand">Urban Bank</div>
-        <div class="nav-links">
+    <header class="main-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand-mark">U</span>
+          <span>Urban Bank</span>
+        </div>
+
+        <nav class="nav-menu">
           <a href="/admin">Admin Panel</a>
-          <form action="/logout" method="POST" style="display:inline;">
+          <form action="/logout" method="POST" style="display:inline; margin:0;">
             <button type="submit">Logout</button>
           </form>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </header>
 
-    <main class="container page-header">
-      <h1>Admin Control Panel</h1>
-      <p class="muted">Manage customer balances and approve token-based withdrawals</p>
+    <main class="page-shell">
+      <div class="container">
+        <h1 class="page-title">Admin control center</h1>
+        <p class="subtle">Monitor balances and manage withdrawal tokens.</p>
 
-      <div class="stat-grid" style="margin-bottom: 26px;">
-        <div class="stat-item">
-          <strong>Total System Balance</strong>
-          <div>$<%= Number(totalBalance).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></div>
+        <div class="stat-grid" style="margin-top: 24px;">
+          <div class="stat-box">
+            <p>Total system balance</p>
+            <strong>$<%= Number(totalBalance).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></strong>
+          </div>
+          <div class="stat-box">
+            <p>Customer accounts</p>
+            <strong><%= users.length %></strong>
+          </div>
+          <div class="stat-box">
+            <p>Pending requests</p>
+            <strong><%= requests.filter((r) => r.status === 'pending').length %></strong>
+          </div>
         </div>
-        <div class="stat-item">
-          <strong>Users</strong>
-          <div><%= users.length %></div>
-        </div>
-        <div class="stat-item">
-          <strong>Pending Requests</strong>
-          <div><%= requests.filter((r) => r.status === 'pending').length %></div>
-        </div>
-      </div>
 
-      <div class="dashboard-grid">
-        <section class="card">
-          <h3>Customer Accounts</h3>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Balance</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% users.forEach((account) => { %>
+        <div class="dashboard-grid">
+          <section class="card">
+            <h3>Customer accounts</h3>
+            <table class="table">
+              <thead>
                 <tr>
-                  <td><%= account.name %></td>
-                  <td><%= account.email %></td>
-                  <td>$<%= Number(account.balance).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></td>
-                  <td>
-                    <form action="/admin/users/<%= account.id %>/balance" method="POST" style="display:flex; gap:8px;">
-                      <input type="number" step="0.01" name="balance" value="<%= account.balance %>" style="width:100px;" />
-                      <button class="btn btn-success" type="submit">Update</button>
-                    </form>
-                  </td>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Balance</th>
+                  <th>Action</th>
                 </tr>
-              <% }); %>
-            </tbody>
-          </table>
-        </section>
+              </thead>
+              <tbody>
+                <% users.forEach((account) => { %>
+                  <tr>
+                    <td><%= account.name %></td>
+                    <td><%= account.email %></td>
+                    <td>$<%= Number(account.balance).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></td>
+                    <td>
+                      <form action="/admin/users/<%= account.id %>/balance" method="POST" class="inline-form" style="margin-top: 0;">
+                        <input type="number" step="0.01" name="balance" value="<%= account.balance %>" />
+                        <button class="btn btn-success" type="submit">Update</button>
+                      </form>
+                    </td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </section>
 
-        <section class="card">
-          <h3>Withdrawal Requests</h3>
-          <% if (requests.length === 0) { %>
-            <p class="muted">No withdrawal requests yet.</p>
-          <% } else { %>
-            <% requests.forEach((request) => { %>
-              <div style="border: 1px solid #e3ebf8; padding: 14px; border-radius: 12px; margin-bottom: 14px;">
-                <strong>User ID:</strong> <%= request.userId %><br />
-                <strong>Amount:</strong> $<%= Number(request.amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %><br />
-                <strong>Status:</strong> <span class="badge <%= request.status %>"><%= request.status %></span><br />
-                <% if (request.token) { %>
-                  <strong>Token:</strong> <%= request.token %>
-                <% } else { %>
-                  <form action="/admin/tokens/<%= request.id %>/issue" method="POST" style="margin-top: 10px;">
-                    <input type="text" name="note" placeholder="Approval note" />
-                    <button class="btn btn-primary" type="submit" style="margin-top: 10px;">Issue Token</button>
-                  </form>
-                <% } %>
-              </div>
-            <% }); %>
-          <% } %>
-        </section>
+          <section class="card">
+            <h3>Withdrawal requests</h3>
+            <% if (requests.length === 0) { %>
+              <p class="note">No withdrawal requests yet.</p>
+            <% } else { %>
+              <% requests.forEach((request) => { %>
+                <div style="border: 1px solid rgba(148, 163, 184, 0.26); border-radius: 14px; padding: 14px; margin-bottom: 14px;">
+                  <strong>Request ID:</strong> <%= request.id %><br />
+                  <strong>Amount:</strong> $<%= Number(request.amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %><br />
+                  <strong>Status:</strong> <span class="badge <%= request.status %>"><%= request.status %></span><br />
+
+                  <% if (request.token) { %>
+                    <strong>Token:</strong> <%= request.token %>
+                  <% } else { %>
+                    <form action="/admin/tokens/<%= request.id %>/issue" method="POST" style="margin-top: 12px;">
+                      <input type="text" name="note" placeholder="Approval note" />
+                      <button class="btn btn-primary" type="submit" style="margin-top: 10px;">Issue token</button>
+                    </form>
+                  <% } %>
+                </div>
+              <% }); %>
+            <% } %>
+          </section>
+        </div>
       </div>
     </main>
   </body>

@@ -3,82 +3,95 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Urban Bank</title>
+    <title>Urban Bank | Secure Banking</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <nav class="navbar">
-      <div class="container">
-        <div class="brand">Urban Bank</div>
-        <div class="nav-links">
+    <header class="main-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand-mark">U</span>
+          <span>Urban Bank</span>
+        </div>
+
+        <nav class="nav-menu">
           <a href="/">Home</a>
           <% if (user) { %>
             <% if (user.role === 'admin') { %>
-              <a href="/admin">Admin Panel</a>
+              <a href="/admin">Admin</a>
             <% } else { %>
               <a href="/dashboard">Dashboard</a>
-              <a href="/chat">Support Chat</a>
+              <a href="/chat">Support</a>
             <% } %>
-            <form action="/logout" method="POST" style="display:inline;">
+            <form action="/logout" method="POST" style="display:inline; margin:0;">
               <button type="submit">Logout</button>
             </form>
           <% } else { %>
             <a href="/login">Login</a>
             <a href="/register">Register</a>
           <% } %>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </header>
 
-    <main class="hero">
-      <div class="container hero-grid">
-        <div>
-          <h1>Smart banking for modern life</h1>
-          <p>
-            Urban Bank gives students and customers a secure place to manage money,
-            track balances, and access support for withdrawal requests through a fast
-            token-based service.
-          </p>
-          <div class="button-row">
-            <a class="btn btn-primary" href="/register">Open an Account</a>
-            <a class="btn btn-secondary" href="/login">Log In</a>
-          </div>
-        </div>
+    <main class="page-shell">
+      <div class="container">
+        <section class="hero">
+          <div class="hero-copy">
+            <h1>Smart banking for the next generation.</h1>
+            <p>
+              Manage your money with confidence using a modern digital bank designed for simple account management,
+              secure balance updates, and token-based withdrawal support.
+            </p>
 
-        <div class="card">
-          <div class="stat-grid">
-            <div class="stat-item">
-              <strong>1.2M+</strong>
-              <div class="muted">Secure transactions</div>
-            </div>
-            <div class="stat-item">
-              <strong>24/7</strong>
-              <div class="muted">Support access</div>
-            </div>
-            <div class="stat-item">
-              <strong>99.9%</strong>
-              <div class="muted">Service uptime</div>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="/register">Open an account</a>
+              <a class="btn btn-secondary" href="/login">Sign in</a>
             </div>
           </div>
-        </div>
+
+          <div class="card">
+            <div class="stat-grid">
+              <div class="stat-box">
+                <div class="metric">
+                  <strong>1.2M+</strong>
+                  <span>Secure</span>
+                </div>
+                <p>Transactions processed</p>
+              </div>
+              <div class="stat-box">
+                <div class="metric">
+                  <strong>24/7</strong>
+                  <span>Always</span>
+                </div>
+                <p>Customer service support</p>
+              </div>
+              <div class="stat-box">
+                <div class="metric">
+                  <strong>99.9%</strong>
+                  <span>Reliable</span>
+                </div>
+                <p>Platform stability</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="feature-grid">
+          <article class="feature-card">
+            <h3>Admin balance control</h3>
+            <p>Only administrators can adjust user balances from a secure dashboard.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Withdrawal token system</h3>
+            <p>Customers request withdrawals through support and receive a token after admin approval.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Modern experience</h3>
+            <p>Optimized for speed, readability, and a more polished student project presentation.</p>
+          </article>
+        </section>
       </div>
     </main>
-
-    <div class="container">
-      <div class="feature-grid">
-        <div class="feature-item">
-          <h3>Balance Control</h3>
-          <p>Admins can update and monitor customer balances securely from one dashboard.</p>
-        </div>
-        <div class="feature-item">
-          <h3>Token Withdrawals</h3>
-          <p>Users request withdrawals through customer support and receive a token approval.</p>
-        </div>
-        <div class="feature-item">
-          <h3>Student-Friendly Design</h3>
-          <p>A clean, responsive interface designed for easy project demonstration.</p>
-        </div>
-      </div>
-    </div>
   </body>
 </html>
