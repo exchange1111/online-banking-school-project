@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Urban Bank | Secure Banking</title>
+    <title>Urban Bank | Private Banking & Digital Finance</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
@@ -21,6 +21,7 @@
               <a href="/admin">Admin</a>
             <% } else { %>
               <a href="/dashboard">Dashboard</a>
+              <a href="/transactions">Transactions</a>
               <a href="/chat">Support</a>
             <% } %>
             <form action="/logout" method="POST" style="display:inline; margin:0;">
@@ -38,10 +39,11 @@
       <div class="container">
         <section class="hero">
           <div class="hero-copy">
-            <h1>Smart banking for the next generation.</h1>
+            <span class="eyebrow">Private banking, simplified</span>
+            <h1>Banking that keeps your money moving with confidence.</h1>
             <p>
-              Manage your money with confidence using a modern digital bank designed for simple account management,
-              secure balance updates, and token-based withdrawal support.
+              Urban Bank offers secure digital banking for everyday life — from account management
+              and spending visibility to fast support and withdrawal approvals.
             </p>
 
             <div class="hero-actions">
@@ -50,28 +52,31 @@
             </div>
           </div>
 
-          <div class="card">
-            <div class="stat-grid">
+          <div class="card premium-card">
+            <div class="mini-header">
+              <span class="status-dot"></span>
+              <span>Account overview</span>
+            </div>
+
+            <div class="balance-wrap">
+              <p>Available balance</p>
+              <h2>$24,860.50</h2>
+            </div>
+
+            <div class="stat-grid compact-grid">
               <div class="stat-box">
                 <div class="metric">
-                  <strong>1.2M+</strong>
-                  <span>Secure</span>
+                  <strong>2.4%</strong>
+                  <span>Yield</span>
                 </div>
-                <p>Transactions processed</p>
+                <p>Monthly growth</p>
               </div>
               <div class="stat-box">
                 <div class="metric">
                   <strong>24/7</strong>
-                  <span>Always</span>
+                  <span>Live</span>
                 </div>
-                <p>Customer service support</p>
-              </div>
-              <div class="stat-box">
-                <div class="metric">
-                  <strong>99.9%</strong>
-                  <span>Reliable</span>
-                </div>
-                <p>Platform stability</p>
+                <p>Support access</p>
               </div>
             </div>
           </div>
@@ -79,16 +84,21 @@
 
         <section class="feature-grid">
           <article class="feature-card">
-            <h3>Admin balance control</h3>
-            <p>Only administrators can adjust user balances from a secure dashboard.</p>
+            <div class="feature-icon">01</div>
+            <h3>Smart account management</h3>
+            <p>Secure balance monitoring, better visibility, and a cleaner way to manage cash flow.</p>
           </article>
+
           <article class="feature-card">
-            <h3>Withdrawal token system</h3>
-            <p>Customers request withdrawals through support and receive a token after admin approval.</p>
+            <div class="feature-icon">02</div>
+            <h3>Fast withdrawal support</h3>
+            <p>Request withdrawals through secure support channels and receive a verified token after approval.</p>
           </article>
+
           <article class="feature-card">
-            <h3>Modern experience</h3>
-            <p>Optimized for speed, readability, and a more polished student project presentation.</p>
+            <div class="feature-icon">03</div>
+            <h3>Transparent transactions</h3>
+            <p>Review every change in your account history with accurate records and clear activity logs.</p>
           </article>
         </section>
       </div>
