@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Urban Bank | Login</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="brand">Urban Bank</div>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/register">Register</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container form-wrap">
+      <div class="card">
+        <h2>Login</h2>
+
+        <% if (typeof error !== 'undefined' && error) { %>
+          <div class="alert"><%= error %></div>
+        <% } %>
+
+        <form action="/login" method="POST">
+          <label>
+            Email
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+
+          <label>
+            Password
+            <input type="password" name="password" placeholder="••••••••" required />
+          </label>
+
+          <button class="btn btn-primary" type="submit">Sign In</button>
+        </form>
+
+        <p class="muted" style="margin-top: 16px;">
+          Demo admin: admin@bank.com / admin123
+        </p>
+        <p class="muted">
+          Demo user: user@bank.com / user123
+        </p>
+      </div>
+    </main>
+  </body>
+</html>

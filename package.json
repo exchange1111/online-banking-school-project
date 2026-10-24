@@ -1,0 +1,15 @@
+{
+  "name": "online-banking-school-project",
+  "version": "1.0.0",
+  "description": "Online banking school project with admin controls and tokenized withdrawal flow.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "ejs": "^3.1.0",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0"
+  }
+}

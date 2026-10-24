@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Urban Bank | Customer Support</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="brand">Urban Bank</div>
+        <div class="nav-links">
+          <a href="/dashboard">Dashboard</a>
+          <form action="/logout" method="POST" style="display:inline;">
+            <button type="submit">Logout</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container page-header">
+      <h1>Support Chat</h1>
+      <p class="muted">Request a withdrawal token securely</p>
+
+      <div class="card">
+        <div class="chat-box">
+          <% messages.forEach((msg) => { %>
+            <div class="message <%= msg.sender %>">
+              <div><strong><%= msg.sender === 'user' ? user.name : 'Support' %></strong></div>
+              <div><%= msg.text %></div>
+            </div>
+          <% }); %>
+        </div>
+
+        <form action="/chat/message" method="POST">
+          <div class="inline-form">
+            <input type="text" name="message" placeholder="Type your message here..." required />
+            <button type="submit" class="btn btn-primary">Send</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Urban Bank | Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="brand">Urban Bank</div>
+        <div class="nav-links">
+          <a href="/dashboard">Dashboard</a>
+          <a href="/chat">Support Chat</a>
+          <form action="/logout" method="POST" style="display:inline;">
+            <button type="submit">Logout</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container page-header">
+      <h1>Welcome, <%= user.name %></h1>
+      <p class="muted">Your secure account dashboard</p>
+
+      <div class="dashboard-grid">
+        <section class="card">
+          <h3>Account Summary</h3>
+          <div class="stat-grid">
+            <div class="stat-item">
+              <strong>Balance</strong>
+              <div>$<%= Number(user.balance).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></div>
+            </div>
+            <div class="stat-item">
+              <strong>Email</strong>
+              <div><%= user.email %></div>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px;">
+            <a class="btn btn-primary" href="/chat">Open Support Chat</a>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3>Withdrawal Requests</h3>
+          <% if (requests.length === 0) { %>
+            <p class="muted">No requests yet.</p>
+          <% } else { %>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% requests.forEach((request) => { %>
+                  <tr>
+                    <td>$<%= Number(request.amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></td>
+                    <td>
+                      <span class="badge <%= request.status %>"><%= request.status %></span>
+                    </td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          <% } %>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Urban Bank</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="brand">Urban Bank</div>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <% if (user) { %>
+            <% if (user.role === 'admin') { %>
+              <a href="/admin">Admin Panel</a>
+            <% } else { %>
+              <a href="/dashboard">Dashboard</a>
+              <a href="/chat">Support Chat</a>
+            <% } %>
+            <form action="/logout" method="POST" style="display:inline;">
+              <button type="submit">Logout</button>
+            </form>
+          <% } else { %>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+          <% } %>
+        </div>
+      </div>
+    </nav>
+
+    <main class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>Smart banking for modern life</h1>
+          <p>
+            Urban Bank gives students and customers a secure place to manage money,
+            track balances, and access support for withdrawal requests through a fast
+            token-based service.
+          </p>
+          <div class="button-row">
+            <a class="btn btn-primary" href="/register">Open an Account</a>
+            <a class="btn btn-secondary" href="/login">Log In</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="stat-grid">
+            <div class="stat-item">
+              <strong>1.2M+</strong>
+              <div class="muted">Secure transactions</div>
+            </div>
+            <div class="stat-item">
+              <strong>24/7</strong>
+              <div class="muted">Support access</div>
+            </div>
+            <div class="stat-item">
+              <strong>99.9%</strong>
+              <div class="muted">Service uptime</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-item">
+          <h3>Balance Control</h3>
+          <p>Admins can update and monitor customer balances securely from one dashboard.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Token Withdrawals</h3>
+          <p>Users request withdrawals through customer support and receive a token approval.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Student-Friendly Design</h3>
+          <p>A clean, responsive interface designed for easy project demonstration.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
